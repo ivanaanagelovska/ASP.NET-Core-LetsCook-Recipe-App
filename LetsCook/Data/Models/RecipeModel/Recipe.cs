@@ -2,11 +2,11 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using Data.Common;
     using static DataConstants;
 
-    public class Recipe
+    public class Recipe : BaseDeletableModel<int>
     {
-        public int Id { get; set; }
 
         [Required]
         [MaxLength(RecipeNameMaxLenght)]
@@ -15,35 +15,32 @@
         [MaxLength(RecipeDescriptionMaxLenght)]
         public string Description { get; set; }
 
-        // TODO: Check for max time
         public TimeSpan PreparationTime { get; set; }
 
         public TimeSpan? CookingTime { get; set; }
 
         public TimeSpan? RestTime { get; set; }
 
+        public int Servings { get; set; }
+
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         public int? CuisineId { get; set; }
 
-        public Cuisine Cuisine { get; set; }
+        public virtual Cuisine Cuisine { get; set; }
 
-        public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new HashSet<RecipeIngredient>();
+        public int DifficultyId { get; set; }
 
-        // TODO: Add instructions group name
-        [Required]
-        public ICollection<Instruction> Instructions { get; set; } = new HashSet<Instruction>();
+        public virtual Difficulty Difficulty { get; set; }
 
-        public string Notes { get; set; }
+       public virtual ICollection<RecipeTag> Tags { get; set; } = new HashSet<RecipeTag>();
 
-        public DateTime CreatedOn { get; set; }
+       public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();
 
-        public DateTime? ModifiedOn { get; set; }
+        public virtual ICollection<Note> Notes { get; set; } = new HashSet<Note>();
 
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
+        public virtual ICollection<SubRecipe> SubRecipes { get; set; } = new HashSet<SubRecipe>();
     }
 }

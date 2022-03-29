@@ -1,26 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LetsCook.Data.Models.RecipeModel
+﻿namespace LetsCook.Data.Models.RecipeModel
 {
-    public class Instruction
+    using System.ComponentModel.DataAnnotations;
+
+    using Data.Common;
+    using static DataConstants;
+    public class Instruction : BaseModel<int>
     {
-        public int Id { get; init; }
+        public int StepNumber { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        [MaxLength(InstructionTextMaxLength)]
+        public string Text { get; set; }
 
-        public int RecipeId { get; set; }
+        public int SubRecipeId { get; set; }
 
-        public Recipe Recipe { get; set; }
-
-        // TODO: Add instruction group name
-
-        public DateTime CreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
+        public virtual SubRecipe SubRecipe { get; set; }
     }
 }

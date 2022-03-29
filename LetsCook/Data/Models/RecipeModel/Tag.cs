@@ -1,17 +1,15 @@
 ﻿namespace LetsCook.Data.Models.RecipeModel
 {
     using System.ComponentModel.DataAnnotations;
-
+    
     using Data.Common;
     using static DataConstants;
-
-    public class Ingredient : BaseDeletableModel<int>
+    public class Tag : BaseDeletableModel<int>
     {
-
         [Required]
-        [MaxLength(IngredientNameMaxLenght)]
+        [MaxLength(TagNameMaxLenght)]
         public string Name { get; set; }
 
-        public virtual ICollection<RecipeIngredient> Recipes { get; set; } = new HashSet<RecipeIngredient>();
+        public virtual ICollection<RecipeTag> Recipes { get; set; } = new HashSet<RecipeTag>();
     }
 }
