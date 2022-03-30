@@ -4,7 +4,7 @@ using LetsCook.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -28,9 +28,10 @@ builder
     .Services
     .AddControllersWithViews();
 
+
 var app = builder.Build();
 
-app.Initialize();
+app.ApplyMigrations();
 
 if (app.Environment.IsDevelopment())
 {
@@ -41,6 +42,8 @@ else
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+
+app.ApplyMigrations();
 
 app
     .UseHttpsRedirection()
@@ -56,3 +59,5 @@ app
     
 app
     .Run();
+
+
