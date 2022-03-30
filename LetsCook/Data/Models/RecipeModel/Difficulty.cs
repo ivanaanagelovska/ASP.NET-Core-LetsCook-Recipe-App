@@ -5,7 +5,7 @@
     using Data.Common;
     using static DataConstants;
 
-    public class Difficulty : BaseDeletableModel<int>
+    public class Difficulty : BaseModel<int>
     {
         [Required]
         [MaxLength(DifficultyNameMaxLenght)]

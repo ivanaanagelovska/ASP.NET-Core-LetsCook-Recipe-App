@@ -1,8 +1,9 @@
 ﻿namespace LetsCook.Data
 {
-    using LetsCook.Data.Models.RecipeModel;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+
+    using LetsCook.Data.Models.RecipeModel;
 
     public class LetsCookDbContext : IdentityDbContext
     {
@@ -37,58 +38,64 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-
-            builder.Entity<RecipeIngredient>(entity =>
-           {
-               entity.Property(p => p.Amount)
-               .HasColumnType("decimal(4, 2)");
-
-           });
-
             builder.Entity<Recipe>(entity =>
             {
-                entity.HasOne(r => r.Category)
+                entity
+                    .HasOne(r => r.Category)
                     .WithMany(r => r.Recipes)
                     .HasForeignKey(r => r.CategoryId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(r => r.Cuisine)
+                entity
+                    .HasOne(r => r.Cuisine)
                     .WithMany(r => r.Recipes)
                     .HasForeignKey(r => r.CuisineId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(r => r.Difficulty)
+                entity
+                    .HasOne(r => r.Difficulty)
                     .WithMany(r => r.Recipes)
                     .HasForeignKey(r => r.DifficultyId)
                     .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasMany(r => r.Images)
-                    .WithOne(r => r.Recipe)
-                    .HasForeignKey(r => r.RecipeId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasMany(r => r.Notes)
-                    .WithOne(r => r.Recipe)
-                    .HasForeignKey(r => r.RecipeId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasMany(r => r.Ingredients)
-                    .WithOne(r => r.Recipe)
-                    .HasForeignKey(r => r.RecipeId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasMany(r => r.Tags)
-                    .WithOne(r => r.Recipe)
-                    .HasForeignKey(r => r.RecipeId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasMany(r => r.SubRecipes)
-                    .WithOne(r => r.Recipe)
-                    .HasForeignKey(r => r.RecipeId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
             });
+
+            builder.Entity<RecipeIngredient>(entity =>
+            {
+                entity.HasOne(i => i.Ingredient)
+                    .WithMany(i => i.SubRecipes)
+                    .HasForeignKey(i => i.IngredientId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(r => r.SubRecipe)
+                   .WithMany(r => r.Ingredients)
+                   .HasForeignKey(i => i.SubRecipeId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+                entity
+                    .Property(p => p.Amount)
+                    .HasColumnType("decimal(4, 2)");
+            });
+
+            builder.Entity<RecipeTag>(entity =>
+            {
+                entity.HasOne(t => t.Tag)
+                    .WithMany(t => t.Recipes)
+                    .HasForeignKey(t => t.RecipeId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(r => r.Recipe)
+                   .WithMany(r => r.Tags)
+                   .HasForeignKey(i => i.TagId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<SubRecipe>()
+                .HasOne(s => s.Recipe)
+                .WithMany(s => s.SubRecipes)
+                .HasForeignKey(s => s.RecipeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(builder);
         }
     }
 }

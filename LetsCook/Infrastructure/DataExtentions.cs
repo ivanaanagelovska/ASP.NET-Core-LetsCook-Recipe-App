@@ -2,7 +2,7 @@
 {
     using LetsCook.Data;
     using LetsCook.Data.Models.RecipeModel;
-    
+
     using Microsoft.EntityFrameworkCore;
 
 
@@ -57,8 +57,8 @@
             dbContext.Difficulties.AddRange(new[]
             {
                         new Difficulty{ Name = "Super Easy"},
-                        new Difficulty{ Name = "Not too tricky"},
-                        new Difficulty{ Name = "Showing off"},
+                        new Difficulty{ Name = "Not Too Tricky"},
+                        new Difficulty{ Name = "Showing Off"},
                     });
 
             dbContext.SaveChanges();
@@ -122,7 +122,7 @@
 
             dbContext.Cuisines.AddRange(new[]
             {
-                        new Cuisine{ Name="African"},
+                        new Cuisine{ Name="African", },
                         new Cuisine{ Name="Asian"},
                         new Cuisine{ Name="Caribbean"},
                         new Cuisine{ Name="Central American"},
@@ -131,7 +131,7 @@
                         new Cuisine{ Name="Asian"},
                         new Cuisine{ Name="Europe"},
 
-                    });
+            });
         }
     }
 }

@@ -6,9 +6,9 @@
     using static DataConstants;
     public class RecipeIngredient : BaseModel<int>
     {
-        public int RecipeId { get; set; }
+        public int SubRecipeId { get; set; }
 
-        public virtual Recipe Recipe { get; set; }
+        public virtual SubRecipe SubRecipe { get; set; }
 
         public int IngredientId { get; set; }
 
@@ -22,8 +22,6 @@
         [MaxLength(IngredientNoteMaxLenght)]
         public string Note { get; set; }
 
-        public int SubRecipeId { get; set; }
 
-        public virtual SubRecipe SubRecipe { get; set; }
     }
 }

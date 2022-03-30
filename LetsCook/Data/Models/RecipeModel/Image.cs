@@ -9,6 +9,7 @@
         {
             this.Id = new Guid().ToString();
         }
+
         [Required]
         public string ImageUrl { get; set; }
 

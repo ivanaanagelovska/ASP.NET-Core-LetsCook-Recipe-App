@@ -1,5 +1,4 @@
-﻿
-namespace LetsCook.Controllers
+﻿namespace LetsCook.Controllers
 {
     using System.Diagnostics;
 

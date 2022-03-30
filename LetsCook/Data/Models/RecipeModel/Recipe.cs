@@ -35,8 +35,6 @@
 
         public virtual Difficulty Difficulty { get; set; }
 
-        public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new HashSet<RecipeIngredient>();
-
         public virtual ICollection<RecipeTag> Tags { get; set; } = new HashSet<RecipeTag>();
 
         public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();

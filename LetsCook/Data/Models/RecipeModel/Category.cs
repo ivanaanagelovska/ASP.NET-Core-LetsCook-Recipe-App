@@ -5,7 +5,7 @@
     using Data.Common;
     using static DataConstants;
 
-    public class Category : BaseDeletableModel<int>
+    public class Category : BaseModel<int>
     {
 
         [Required]

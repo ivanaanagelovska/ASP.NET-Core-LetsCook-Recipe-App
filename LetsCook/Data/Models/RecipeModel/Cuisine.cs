@@ -5,7 +5,7 @@
     using Data.Common;
     using static DataConstants;
 
-    public class Cuisine : BaseDeletableModel<int>
+    public class Cuisine : BaseModel<int>
     {
         [Required]
         [MaxLength(CuisineNameMaxLenght)]

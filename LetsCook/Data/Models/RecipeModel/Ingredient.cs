@@ -12,6 +12,6 @@
         [MaxLength(IngredientNameMaxLenght)]
         public string Name { get; set; }
 
-        public virtual ICollection<RecipeIngredient> Recipes { get; set; } = new HashSet<RecipeIngredient>();
+        public virtual ICollection<RecipeIngredient> SubRecipes { get; set; } = new HashSet<RecipeIngredient>();
     }
 }
