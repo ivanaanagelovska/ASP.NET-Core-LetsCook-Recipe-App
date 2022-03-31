@@ -14,6 +14,11 @@
         {
             this.dbContext = db;
         }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult Create()
         {
             var recipe = new CreateRecipeFormModel

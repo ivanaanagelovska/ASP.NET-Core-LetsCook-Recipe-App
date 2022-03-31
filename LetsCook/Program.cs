@@ -31,7 +31,7 @@ builder
 
 var app = builder.Build();
 
-app.ApplyMigrations();
+app.DbInitializer();
 
 if (app.Environment.IsDevelopment())
 {
@@ -42,8 +42,6 @@ else
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
-
-app.ApplyMigrations();
 
 app
     .UseHttpsRedirection()

@@ -19,6 +19,8 @@
         public const int RecipeDescriptionMaxLenght = 300;
         public const int RecipeDescriptionMinLenght = 10;
         public const int RecipeNoteMaxLenght = 300;
+        public const int ServingsMaxValue = 50;
+        public const int ServingsMinValue = 1;
 
         public const int RecipePartNameMaxLenght = 40;
 

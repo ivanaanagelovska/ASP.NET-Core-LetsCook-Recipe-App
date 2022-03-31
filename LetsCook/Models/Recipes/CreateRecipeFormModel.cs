@@ -5,24 +5,29 @@
     public class CreateRecipeFormModel
     {
         [Required(ErrorMessage = "This is a required field")]
-        [StringLength(RecipeNameMaxLenght, MinimumLength = RecipeNameMinLenght, ErrorMessage = "{0} value should be between {2} and {1} characters")]
+        [StringLength(RecipeNameMaxLenght, MinimumLength = RecipeNameMinLenght, ErrorMessage = "{0} should be between {2} and {1} characters")]
         [Display(Name = "Title")]
+
         public string Name { get; set; }
         
-        [StringLength(RecipeDescriptionMaxLenght, MinimumLength = RecipeDescriptionMinLenght, ErrorMessage = "{0} value should be between {2} and {1} characters")]
+        [StringLength(RecipeDescriptionMaxLenght, MinimumLength = RecipeDescriptionMinLenght, ErrorMessage = "{0} should be between {2} and {1} characters")]
         [Display(Name = "Short Intro")]
+
         public string Description { get; set; }
 
-        //[Display(Name = "Prep time")]
-        //public TimeSpan PreparationTime { get; set; }
+        [Display(Name = "Prep time")]
 
-        //[Display(Name = "Cook time")]
-        //public TimeSpan? CookingTime { get; set; }
+        public TimeSpan PreparationTime { get; set; }
 
-        //[Display(Name = "Rest time")]
-        //public TimeSpan? RestTime { get; set; }
-        
-        [Range(1, 20, ErrorMessage ="{0} value should be between {1} and {2}.")]
+        [Display(Name = "Cook time")]
+        public TimeSpan? CookingTime { get; set; }
+
+        [Display(Name = "Rest time")]
+
+        public TimeSpan? RestTime { get; set; }
+
+        [Range(ServingsMinValue, ServingsMaxValue, ErrorMessage ="{0} should be between {1} and {2}.")]
+
         public int Servings { get; set; }
 
         public int CategoryId { get; set; }

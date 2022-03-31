@@ -11,7 +11,7 @@
             <form method="post">
                 <div class="form-group">
                     <label asp-for="Name"></label>
-                    <input asp-for="Name" class="form-control" placeholder="e.g.Liona's  apple pie">
+                    <input asp-for="Name" class="form-control" placeholder="e.g. Liona's  apple pie">
                     <span asp-validation-for="Name" class="small text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -19,9 +19,27 @@
                     <textarea asp-for="Description" class="form-control" rows="3" placeholder="Tell us about your recipe"></textarea>
                     <span asp-validation-for="Description" class="small text-danger"></span>
                 </div>
+                <div class="row g-6">
+                    <div class="form-group col-4">
+                        <label asp-for="PreparationTime"></label>
+                        <input asp-for="PreparationTime" class="form-control">
+                        <span asp-validation-for="PreparationTime" class="small text-danger"></span>
+                    </div>
+                    <div class="form-group col-4">
+                        <label asp-for="CookingTime"></label>
+                        <input asp-for="CookingTime" class="form-control">
+                        <span asp-validation-for="CookingTime" class="small text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-4">
+                        <label asp-for="RestTime"> </label>
+                        <input asp-for="RestTime" class="form-control">
+                        <span asp-validation-for="RestTime" class="small text-danger"></span>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label asp-for="Servings"></label>
-                    <input asp-for="Servings" class="form-control" rows="3" placeholder="Tell us about your recipe">
+                    <input asp-for="Servings" class="form-control" placeholder="1">
                     <span asp-validation-for="Servings" class="small text-danger"></span>
                 </div>
                 <div class="form-group">
