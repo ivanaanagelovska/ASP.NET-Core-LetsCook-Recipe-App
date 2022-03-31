@@ -1,8 +1,9 @@
-using LetsCook.Data;
-using LetsCook.Infrastructure;
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
+using LetsCook.Data;
+using LetsCook.Infrastructure;
+using LetsCook.Services.Recipes;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,18 @@ builder
 builder
     .Services
     .AddControllersWithViews();
+
+builder
+    .Services
+    .AddTransient<ICategoryService, CategoryService>();
+
+builder
+    .Services
+    .AddTransient<ICuisineService, CuisineService>();
+
+builder
+    .Services
+    .AddTransient<IDifficultyService, DifficultyService>();
 
 
 var app = builder.Build();

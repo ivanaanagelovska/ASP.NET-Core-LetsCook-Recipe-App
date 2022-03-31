@@ -1,6 +1,6 @@
-﻿namespace LetsCook.Models.Recipes
+﻿namespace LetsCook.Services.Recipes.Models
 {
-    public class CategoryViewModel
+    public class DifficultyServiceModel
     {
         public int Id { get; set; }
 

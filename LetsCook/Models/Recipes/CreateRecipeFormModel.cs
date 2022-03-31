@@ -1,6 +1,8 @@
 ﻿namespace LetsCook.Models.Recipes
 {
     using System.ComponentModel.DataAnnotations;
+
+    using Services.Recipes.Models;
     using static Data.DataConstants;
     public class CreateRecipeFormModel
     {
@@ -30,17 +32,22 @@
 
         public int Servings { get; set; }
 
+        [Display(Name ="Category")]
         public int CategoryId { get; set; }
 
-        public IEnumerable<CategoryViewModel> Categories { get; set; }
+        public IEnumerable<CategoryServiceModel> Categories { get; set; }
+
+        [Display(Name = "Cuisine")]
 
         public int? CuisineId { get; set; }
 
-        public IEnumerable<CuisineViewModel> Cuisines { get; set; }
+        public IEnumerable<CuisineServiceModel> Cuisines { get; set; }
+
+        [Display(Name = "Difficulty")]
 
         public int DifficultyId { get; set; }
 
-        public IEnumerable<DifficultyViewModel> Difficulties { get; set; }
+        public IEnumerable<DifficultyServiceModel> Difficulties { get; set; }
 
         //public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new HashSet<RecipeIngredient>();
 

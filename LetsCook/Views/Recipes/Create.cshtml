@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label asp-for="CuisineId"></label>
                     <select asp-for="CuisineId" class="form-control">
-                        <option selected value=0>Please select one</option>
+                        <option selected>Please select one</option>
                         @foreach (var cuisine in @Model.Cuisines)
                         {
                             <option value=@cuisine.Id>@cuisine.Name</option>
