@@ -32,8 +32,6 @@
 
         public DbSet<RecipeTag> RecipeTags { get; set; }
 
-        public DbSet<SubRecipe> SubRecipes { get; set; }
-
         public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -62,13 +60,13 @@
             builder.Entity<RecipeIngredient>(entity =>
             {
                 entity.HasOne(i => i.Ingredient)
-                    .WithMany(i => i.SubRecipes)
+                    .WithMany(i => i.Recipes)
                     .HasForeignKey(i => i.IngredientId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(r => r.SubRecipe)
+                entity.HasOne(r => r.Recipe)
                    .WithMany(r => r.Ingredients)
-                   .HasForeignKey(i => i.SubRecipeId)
+                   .HasForeignKey(i => i.RecipeId)
                    .OnDelete(DeleteBehavior.Restrict);
 
                 entity
@@ -80,19 +78,19 @@
             {
                 entity.HasOne(t => t.Tag)
                     .WithMany(t => t.Recipes)
-                    .HasForeignKey(t => t.RecipeId)
+                    .HasForeignKey(t => t.TagId)
                     .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(r => r.Recipe)
                    .WithMany(r => r.Tags)
-                   .HasForeignKey(i => i.TagId)
+                   .HasForeignKey(i => i.RecipeId)
                    .OnDelete(DeleteBehavior.Restrict);
             });
 
-            builder.Entity<SubRecipe>()
-                .HasOne(s => s.Recipe)
-                .WithMany(s => s.SubRecipes)
-                .HasForeignKey(s => s.RecipeId)
+            builder.Entity<Instruction>()
+                .HasOne(i => i.Recipe)
+                .WithMany(i => i.Instructions)
+                .HasForeignKey(i => i.RecipeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);

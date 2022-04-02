@@ -41,6 +41,7 @@
 
         public virtual ICollection<Note> Notes { get; set; } = new HashSet<Note>();
 
-        public virtual ICollection<SubRecipe> SubRecipes { get; set; } = new HashSet<SubRecipe>();
+        public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new HashSet<RecipeIngredient>();
+        public virtual ICollection<Instruction> Instructions { get; set; } = new HashSet<Instruction>();
     }
 }

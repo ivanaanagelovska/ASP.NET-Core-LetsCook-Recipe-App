@@ -32,17 +32,17 @@
 
             dbContext.Categories.AddRange(new[]
             {
-                        new Category{ Name = "Appetizers"},
-                        new Category{ Name = "Breakfast & Brunch"},
-                        new Category{ Name = "Cocktails"},
-                        new Category{ Name = "Desserts"},
-                        new Category{ Name = "Juices"},
-                        new Category{ Name = "Mains"},
-                        new Category{ Name = "Salads"},
-                        new Category{ Name = "Salad Dressing"},
-                        new Category{ Name = "Sauces"},
-                        new Category{ Name = "Sides"},
-                        new Category{ Name = "Snacks"},
+                        new Category{ Name = "Appetizers", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Breakfast & Brunch", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Cocktails", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Desserts", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Juices", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Mains", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Salads", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Salad Dressing", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Sauces", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Sides", CreatedOn = DateTime.UtcNow},
+                        new Category{ Name = "Snacks", CreatedOn = DateTime.UtcNow},
                     });
 
             dbContext.SaveChanges();
@@ -57,9 +57,9 @@
 
             dbContext.Difficulties.AddRange(new[]
             {
-                        new Difficulty{ Name = "Super Easy"},
-                        new Difficulty{ Name = "Not Too Tricky"},
-                        new Difficulty{ Name = "Showing Off"},
+                        new Difficulty{ Name = "Super Easy", CreatedOn = DateTime.UtcNow},
+                        new Difficulty{ Name = "Not Too Tricky", CreatedOn = DateTime.UtcNow},
+                        new Difficulty{ Name = "Showing Off", CreatedOn = DateTime.UtcNow},
                     });
 
             dbContext.SaveChanges();
@@ -74,41 +74,41 @@
 
             dbContext.Tags.AddRange(new[]
             {
-                        new Tag{ Name = "Vegetarian"},
-                        new Tag{ Name = "Gluten Free"},
-                        new Tag{ Name = "Vegan"},
-                        new Tag{ Name = "Dairy Free"},
-                        new Tag{ Name = "Healthy Food"},
-                        new Tag{ Name = "BBQ"},
-                        new Tag{ Name = "Beef"},
-                        new Tag{ Name = "Chicken"},
-                        new Tag{ Name = "Turkey"},
-                        new Tag{ Name = "Pork"},
-                        new Tag{ Name = "Lamb"},
-                        new Tag{ Name = "Duck"},
-                        new Tag{ Name = "Seafood"},
-                        new Tag{ Name = "Fish"},
-                        new Tag{ Name = "Pasta"},
-                        new Tag{ Name = "Rice"},
-                        new Tag{ Name = "Potato"},
-                        new Tag{ Name = "Tofu"},
-                        new Tag{ Name = "Cheese"},
-                        new Tag{ Name = "Eggs"},
-                        new Tag{ Name = "Vegetables"},
-                        new Tag{ Name = "Fruit"},
-                        new Tag{ Name = "Pie"},
-                        new Tag{ Name = "Pancake"},
-                        new Tag{ Name = "Cookie"},
-                        new Tag{ Name = "Cake"},
-                        new Tag{ Name = "Biscuit"},
-                        new Tag{ Name = "Muffin"},
-                        new Tag{ Name = "Brownies"},
-                        new Tag{ Name = "Bread"},
-                        new Tag{ Name = "Chocolate"},
-                        new Tag{ Name = "Easter"},
-                        new Tag{ Name = "Christmas"},
-                        new Tag{ Name = "Valentine's Day"},
-                        new Tag{ Name="Party Food"}
+                        new Tag{ Name = "Vegetarian", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Gluten Free", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Vegan", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Dairy Free", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Healthy Food", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "BBQ", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Beef", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Chicken", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Turkey", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Pork", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Lamb", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Duck", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Seafood", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Fish", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Pasta", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Rice", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Potato", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Tofu", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Cheese", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Eggs", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Vegetables", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Fruit", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Pie", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Pancake", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Cookie", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Cake", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Biscuit", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Muffin", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Brownies", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Bread", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Chocolate", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Easter", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Christmas", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name = "Valentine's Day", CreatedOn = DateTime.UtcNow},
+                        new Tag{ Name="Party Food", CreatedOn = DateTime.UtcNow}
                     });
 
             dbContext.SaveChanges();
@@ -123,14 +123,14 @@
 
             dbContext.Cuisines.AddRange(new[]
             {
-                        new Cuisine{ Name="African", },
-                        new Cuisine{ Name="Asian"},
-                        new Cuisine{ Name="Caribbean"},
-                        new Cuisine{ Name="Central American"},
-                        new Cuisine{ Name="Middle Eastern"},
-                        new Cuisine{ Name="South American"},
-                        new Cuisine{ Name="Asian"},
-                        new Cuisine{ Name="Europe"},
+                        new Cuisine{ Name="African", CreatedOn = DateTime.UtcNow },
+                        new Cuisine{ Name="Asian", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Caribbean", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Central American", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Middle Eastern", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="South American", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Asian", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Europe", CreatedOn = DateTime.UtcNow},
 
             });
         }

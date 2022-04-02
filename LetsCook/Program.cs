@@ -41,6 +41,9 @@ builder
     .Services
     .AddTransient<IDifficultyService, DifficultyService>();
 
+builder
+    .Services
+    .AddTransient<IRecipesService, RecipesService>();
 
 var app = builder.Build();
 

@@ -4,6 +4,7 @@ using LetsCook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LetsCook.Data.Migrations
 {
     [DbContext(typeof(LetsCookDbContext))]
-    partial class LetsCookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220401095821_ChangedRecipeTagForeignKey")]
+    partial class ChangedRecipeTagForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,10 +162,10 @@ namespace LetsCook.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RecipeId")
+                    b.Property<int>("StepNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("StepNumber")
+                    b.Property<int>("SubRecipeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -176,7 +178,7 @@ namespace LetsCook.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("SubRecipeId");
 
                     b.ToTable("Instructions");
                 });
@@ -292,7 +294,7 @@ namespace LetsCook.Data.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("RecipeId")
+                    b.Property<int>("SubRecipeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Unit")
@@ -306,7 +308,7 @@ namespace LetsCook.Data.Migrations
 
                     b.HasIndex("IngredientId");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("SubRecipeId");
 
                     b.ToTable("RecipeIngredients");
                 });
@@ -338,6 +340,34 @@ namespace LetsCook.Data.Migrations
                     b.HasIndex("TagId");
 
                     b.ToTable("RecipeTags");
+                });
+
+            modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.SubRecipe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("SubRecipes");
                 });
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.Tag", b =>
@@ -585,13 +615,13 @@ namespace LetsCook.Data.Migrations
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.Instruction", b =>
                 {
-                    b.HasOne("LetsCook.Data.Models.RecipeModel.Recipe", "Recipe")
+                    b.HasOne("LetsCook.Data.Models.RecipeModel.SubRecipe", "SubRecipe")
                         .WithMany("Instructions")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("SubRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Recipe");
+                    b.Navigation("SubRecipe");
                 });
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.Note", b =>
@@ -634,20 +664,20 @@ namespace LetsCook.Data.Migrations
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.RecipeIngredient", b =>
                 {
                     b.HasOne("LetsCook.Data.Models.RecipeModel.Ingredient", "Ingredient")
-                        .WithMany("Recipes")
+                        .WithMany("SubRecipes")
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("LetsCook.Data.Models.RecipeModel.Recipe", "Recipe")
+                    b.HasOne("LetsCook.Data.Models.RecipeModel.SubRecipe", "SubRecipe")
                         .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId")
+                        .HasForeignKey("SubRecipeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Ingredient");
 
-                    b.Navigation("Recipe");
+                    b.Navigation("SubRecipe");
                 });
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.RecipeTag", b =>
@@ -667,6 +697,17 @@ namespace LetsCook.Data.Migrations
                     b.Navigation("Recipe");
 
                     b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.SubRecipe", b =>
+                {
+                    b.HasOne("LetsCook.Data.Models.RecipeModel.Recipe", "Recipe")
+                        .WithMany("SubRecipes")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -737,20 +778,25 @@ namespace LetsCook.Data.Migrations
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.Ingredient", b =>
                 {
-                    b.Navigation("Recipes");
+                    b.Navigation("SubRecipes");
                 });
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.Recipe", b =>
                 {
                     b.Navigation("Images");
 
+                    b.Navigation("Notes");
+
+                    b.Navigation("SubRecipes");
+
+                    b.Navigation("Tags");
+                });
+
+            modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.SubRecipe", b =>
+                {
                     b.Navigation("Ingredients");
 
                     b.Navigation("Instructions");
-
-                    b.Navigation("Notes");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("LetsCook.Data.Models.RecipeModel.Tag", b =>

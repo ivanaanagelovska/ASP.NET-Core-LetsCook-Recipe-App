@@ -21,6 +21,8 @@
         public const int RecipeNoteMaxLenght = 300;
         public const int ServingsMaxValue = 50;
         public const int ServingsMinValue = 1;
+        public const int RecipeTimeMaxValue = 24 * 60;
+        public const int RecipeTimeMinValue = 0;
 
         public const int RecipePartNameMaxLenght = 40;
 
