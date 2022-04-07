@@ -1,7 +1,8 @@
 ﻿namespace LetsCook.Data.Models.RecipeModel
 {
-    using Data.Common;
     using System.ComponentModel.DataAnnotations;
+
+    using Data.Common;
 
     public class Image : BaseModel<string>
     {

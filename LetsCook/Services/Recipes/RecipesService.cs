@@ -16,17 +16,20 @@
         {
             var recipe = new Recipe
             {
-                Name = recipeFormModel.Name,
+                Name = recipeFormModel.Name.Trim(),
                 Description = recipeFormModel.Description,
-                PreparationTime = TimeSpan.FromMinutes(recipeFormModel.PreparationTime),
-                CookingTime = TimeSpan.FromMinutes(recipeFormModel.CookingTime),
-                RestTime = TimeSpan.FromMinutes(recipeFormModel.RestTime),
+                //PreparationTime = TimeSpan.FromMinutes(recipeFormModel.PreparationTime),
+                //CookingTime = TimeSpan.FromMinutes(recipeFormModel.CookingTime),
+                //RestTime = TimeSpan.FromMinutes(recipeFormModel.RestTime),
                 Servings = recipeFormModel.Servings,
                 CategoryId = recipeFormModel.CategoryId,
                 CuisineId = recipeFormModel.CuisineId,
                 DifficultyId = recipeFormModel.DifficultyId,
                 CreatedOn = DateTime.UtcNow,
             };
+
+            
+
             foreach (var item in recipeFormModel.Tags)
             {
                 var tag = this.dbContext.Tags.FirstOrDefault(t => t.Name == item.TagName);

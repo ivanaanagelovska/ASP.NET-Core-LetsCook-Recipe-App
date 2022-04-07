@@ -3,7 +3,9 @@
     using System.ComponentModel.DataAnnotations;
     
     using Data.Common;
+
     using static DataConstants;
+
     public class Tag : BaseDeletableModel<int>
     {
         [Required]

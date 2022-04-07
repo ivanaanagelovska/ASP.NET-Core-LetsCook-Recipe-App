@@ -1,9 +1,9 @@
 ﻿namespace LetsCook.Data
 {
+    using LetsCook.Data.Models.RecipeModel;
+
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-
-    using LetsCook.Data.Models.RecipeModel;
 
     public class LetsCookDbContext : IdentityDbContext
     {

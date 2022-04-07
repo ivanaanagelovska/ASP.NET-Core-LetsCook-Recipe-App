@@ -3,6 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     
     using Data.Common;
+
     using static DataConstants;
 
     public class Note : BaseModel<int>

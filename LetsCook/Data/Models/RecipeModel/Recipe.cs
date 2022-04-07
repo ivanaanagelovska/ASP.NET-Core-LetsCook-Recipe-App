@@ -3,11 +3,11 @@
     using System.ComponentModel.DataAnnotations;
 
     using Data.Common;
+
     using static DataConstants;
 
     public class Recipe : BaseDeletableModel<int>
     {
-
         [Required]
         [MaxLength(RecipeNameMaxLenght)]
         public string Name { get; set; }
@@ -17,9 +17,7 @@
 
         public TimeSpan PreparationTime { get; set; }
 
-        public TimeSpan? CookingTime { get; set; }
-
-        public TimeSpan? RestTime { get; set; }
+        public TimeSpan CookingTime { get; set; }
 
         public int Servings { get; set; }
 
@@ -42,6 +40,7 @@
         public virtual ICollection<Note> Notes { get; set; } = new HashSet<Note>();
 
         public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new HashSet<RecipeIngredient>();
+
         public virtual ICollection<Instruction> Instructions { get; set; } = new HashSet<Instruction>();
     }
 }

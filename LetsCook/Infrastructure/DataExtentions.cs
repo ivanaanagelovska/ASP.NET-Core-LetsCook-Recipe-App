@@ -5,7 +5,6 @@
 
     using Microsoft.EntityFrameworkCore;
 
-
     public static class DataExtensions
     {
         public static WebApplication DbInitializer
@@ -43,7 +42,7 @@
                         new Category{ Name = "Sauces", CreatedOn = DateTime.UtcNow},
                         new Category{ Name = "Sides", CreatedOn = DateTime.UtcNow},
                         new Category{ Name = "Snacks", CreatedOn = DateTime.UtcNow},
-                    });
+            });
 
             dbContext.SaveChanges();
         }
@@ -60,7 +59,7 @@
                         new Difficulty{ Name = "Super Easy", CreatedOn = DateTime.UtcNow},
                         new Difficulty{ Name = "Not Too Tricky", CreatedOn = DateTime.UtcNow},
                         new Difficulty{ Name = "Showing Off", CreatedOn = DateTime.UtcNow},
-                    });
+            });
 
             dbContext.SaveChanges();
         }
@@ -109,7 +108,7 @@
                         new Tag{ Name = "Christmas", CreatedOn = DateTime.UtcNow},
                         new Tag{ Name = "Valentine's Day", CreatedOn = DateTime.UtcNow},
                         new Tag{ Name="Party Food", CreatedOn = DateTime.UtcNow}
-                    });
+            });
 
             dbContext.SaveChanges();
         }
@@ -123,16 +122,21 @@
 
             dbContext.Cuisines.AddRange(new[]
             {
-                        new Cuisine{ Name="African", CreatedOn = DateTime.UtcNow },
+                        new Cuisine{ Name="Mexican", CreatedOn = DateTime.UtcNow },
+                        new Cuisine{ Name="British", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Italian", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Indian", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Greek", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Moroccan", CreatedOn = DateTime.UtcNow},
                         new Cuisine{ Name="Asian", CreatedOn = DateTime.UtcNow},
-                        new Cuisine{ Name="Caribbean", CreatedOn = DateTime.UtcNow},
-                        new Cuisine{ Name="Central American", CreatedOn = DateTime.UtcNow},
-                        new Cuisine{ Name="Middle Eastern", CreatedOn = DateTime.UtcNow},
-                        new Cuisine{ Name="South American", CreatedOn = DateTime.UtcNow},
-                        new Cuisine{ Name="Asian", CreatedOn = DateTime.UtcNow},
-                        new Cuisine{ Name="Europe", CreatedOn = DateTime.UtcNow},
-
+                        new Cuisine{ Name="American", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Spanish", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="French", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Peruvian", CreatedOn = DateTime.UtcNow},
+                        new Cuisine{ Name="Chinese", CreatedOn = DateTime.UtcNow},
             });
+
+            dbContext.SaveChanges();
         }
     }
 }

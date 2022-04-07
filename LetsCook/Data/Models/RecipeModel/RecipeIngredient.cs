@@ -3,7 +3,9 @@
     using System.ComponentModel.DataAnnotations;
 
     using Data.Common;
+
     using static DataConstants;
+
     public class RecipeIngredient : BaseModel<int>
     {
         public int RecipeId { get; set; }

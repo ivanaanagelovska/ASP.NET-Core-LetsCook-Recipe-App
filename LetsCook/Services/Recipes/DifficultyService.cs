@@ -23,6 +23,7 @@
                         Id = x.Id,
                         Name = x.Name,
                     })
+                    .OrderBy(d => d.Id)
                     .ToList();
         }
     }

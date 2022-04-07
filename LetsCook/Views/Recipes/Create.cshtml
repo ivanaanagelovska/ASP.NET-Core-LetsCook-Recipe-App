@@ -10,98 +10,157 @@
         <div clas"offset-lg-2 col-lg-8 col-xs-12">
             <h4 class="heading-margin">Recipe details </h4>
             <form method="post">
+
                 <div class="form-group">
                     <label asp-for="Name"></label>
                     <input asp-for="Name" class="form-control" placeholder="e.g. Liona's  apple pie">
                     <span asp-validation-for="Name" class="small text-danger"></span>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="Description"></label>
                     <textarea asp-for="Description" class="form-control" rows="3" placeholder="Tell us about your recipe"></textarea>
                     <span asp-validation-for="Description" class="small text-danger"></span>
                 </div>
-                <div class="row g-6">
-                    <div class="form-group col-4">
-                        <label asp-for="PreparationTime"></label>
-                        <input asp-for="PreparationTime" class="form-control">
-                        <span asp-validation-for="PreparationTime" class="small text-danger"></span>
-                    </div>
-                    <div class="form-group col-4">
-                        <label asp-for="CookingTime"></label>
-                        <input asp-for="CookingTime" class="form-control">
-                        <span asp-validation-for="CookingTime" class="small text-danger"></span>
 
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label asp-for="PreparationTimeHours"></label>
+                        <select asp-for="PreparationTimeHours" class="form-control">
+                            @for (var i = 0; i < 24; i++)
+                            {
+                                <option value=@i>@i hours</option>
+                            }
+                        </select>
+                        <span asp-validation-for="PreparationTimeHours" class="small text-danger"></span>
                     </div>
-                    <div class="form-group col-4">
-                        <label asp-for="RestTime"> </label>
-                        <input asp-for="RestTime" class="form-control">
-                        <span asp-validation-for="RestTime" class="small text-danger"></span>
+
+                    <div class="form-group col">
+                        <label asp-for="PreparationTimeMinutes"></label>
+                        <select asp-for="PreparationTimeMinutes" class="form-control">
+                            @for (var i = 0; i < 60; i++)
+                            {
+                                <option value=@i>@i minutes</option>
+                            }
+                        </select>
+                        <span asp-validation-for="PreparationTimeMinutes" class="small text-danger"></span>
+                    </div>
+
+                    <div class="form-group col">
+                        <label asp-for="CookingTimeHours"></label>
+                        <select asp-for="CookingTimeHours" class="form-control">
+                            @for (var i = 0; i < 24; i++)
+                            {
+                                <option value=@i>@i hours</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CookingTimeHours" class="small text-danger"></span>
+                    </div>
+
+                    <div class="form-group col">
+                        <label asp-for="CookingTimeMinutes"></label>
+                        <select asp-for="CookingTimeMinutes" class="form-control">
+                            @for (var i = 0; i < 60; i++)
+                            {
+                                <option value=@i>@i minutes</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CookingTimeMinutes" class="small text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Servings"></label>
-                    <input asp-for="Servings" class="form-control">
-                    <span asp-validation-for="Servings" class="small text-danger"></span>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label asp-for="Servings"></label>
+                        <input asp-for="Servings" class="form-control" placeholder="4">
+                        <span asp-validation-for="Servings" class="small text-danger"></span>
+                    </div>
+
+                    <div class="form-group col">
+                        <label asp-for="DifficultyId"></label>
+                        <select asp-for="DifficultyId" class="form-control">
+                            <option value="" selected disabled>Please select one</option>
+                            @foreach (var diff in @Model.Difficulties)
+                            {
+                                <option value=@diff.Id>@diff.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="DifficultyId" class="small text-danger"></span>
+                    </div>
+
+                    <div class="form-group col">
+                        <label asp-for="CategoryId"></label>
+                        <select asp-for="CategoryId" class="form-control">
+                            <option value="" selected disabled>Please select one</option>
+                            @foreach (var category in @Model.Categories)
+                            {
+                                <option value=@category.Id>@category.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CategoryId" class="small text-danger"></span>
+                    </div>
+
+                    <div class="form-group col">
+                        <label asp-for="CuisineId"></label>
+                        <select asp-for="CuisineId" class="form-control">
+                            <option value="" selected disabled>Please select one</option>
+                            @foreach (var cuisine in @Model.Cuisines)
+                            {
+                                <option value=@cuisine.Id>@cuisine.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CuisineId" class="small text-danger"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label asp-for="CategoryId"></label>
-                    <select asp-for="CategoryId" class="form-control">
-                        <option selected>Please select one</option>
-                        @foreach (var category in @Model.Categories)
-                        {
-                            <option value=@category.Id>@category.Name</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CuisineId"></label>
-                    <select asp-for="CuisineId" class="form-control">
-                        <option selected>Please select one</option>
-                        @foreach (var cuisine in @Model.Cuisines)
-                        {
-                            <option value=@cuisine.Id>@cuisine.Name</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DifficultyId"></label>
-                    <select asp-for="DifficultyId" class="form-control">
-                        <option selected>Please select one</option>
-                        @foreach (var diff in @Model.Difficulties)
-                        {
-                            <option value=@diff.Id>@diff.Name</option>
-                        }
-                    </select>
-                </div>
-                <div id="TagsContainer">
+
+                @* <div id="TagsContainer">
                     <label asp-for="Tags"></label>
                     @{
-                        int tagsCount = @Model.Tags.Count();
+                    int tagsCount = @Model.Tags.Count();
                     }
                     @for (int i = 0; i < Model.Tags.Count(); i++)
                     {
-                        <input type="text" value="@Model.Tags[i].TagName" name="Tags[@i].TagName" class='form-control' required>
+                    <input type="text" value="@Model.Tags[i].TagName" name="Tags[@i].TagName" class='form-control' required>
                     }
-                </div>
-                <a class="btn btn-success" onclick="AddMoreTags(@tagsCount)">+</a>
-                <div>
+                    </div>
+                    <a class="btn btn-success" onclick="AddMoreTags(@tagsCount)">+</a>
+                    <div>
                     <label asp-for="Notes"></label>
                     @{
-                        int notesCount = @Model.Notes.Count();
+                    int notesCount = @Model.Notes.Count();
                     }
                     @for (int i = 0; i < Model.Notes.Count(); i++)
                     {
-                        <textarea rows="3" name="Notes[@i].Text" class='form-control'>@Model.Notes[i].Text</textarea>
+                    <textarea rows="3" name="Notes[@i].Text" class='form-control'>@Model.Notes[i].Text</textarea>
                     }
-                </div>
-                <div id="NotesContainer"></div>
-                <a class="btn btn-success" onclick="AddMoreNotes(@notesCount)">+</a>
-                
-                <input class="btn btn-success float-end" type="submit" value="Create">
+                    </div>
+                    <div id="NotesContainer"></div>
+                    <a class="btn btn-success" onclick="AddMoreNotes(@notesCount)">+</a>
+
+                    <div id="IngredientsContainer">
+                    <label asp-for="Ingredients"></label>
+                    @{
+                    int ingredientCount = @Model.Ingredients.Count();
+                    }
+                    @for (int i = 0; i < Model.Ingredients.Count(); i++)
+                    {
+                    <div>
+                    <input type="text" value="@Model.Ingredients[i].Name" name="Ingredients[@i].Name">
+                    <input type="text" value="@Model.Ingredients[i].Amount" name="Ingredients[@i].Amount">
+                    <input type="text" value="@Model.Ingredients[i].Unit" name="Ingredients[@i].Unit">
+                    <input type="text" value="@Model.Ingredients[i].Note" name="Ingredients[@i].Note">
+                    </div>
+                    }
+                    </div>
+                    <a class="btn btn-success" onclick="AddMoreIngredients(@ingredientCount)">+</a>*@
+
+                <input class="btn btn-success float-end" type="submit" value="Create recipe">
             </form>
         </div>
     </div>
 </div>
+
 
 @section Scripts {
 <script>
@@ -117,6 +176,13 @@
         $("#NotesContainer").
             append("<textarea rows = '3' name ='Notes["+ (noteIndex + notesCount) +"].Text' class='form-control'></textarea>");
         noteIndex++;
+    }
+
+    let ingredientIndex = 0;
+    function AddMoreIngredients(ingredientCount) {
+        $("#IngredientsContainer").
+            append("<div class='form-control'><input type='text' name='Ingredients["+ (ingredientIndex + ingredientCount) +"].Name'><input type='text' name='Ingredients["+ (ingredientIndex + ingredientCount) +"].Amount'><input type='text' name='Ingredients["+ (ingredientIndex + ingredientCount) +"].Unit'><input type='text' name='Ingredients["+ (ingredientIndex + ingredientCount) +"].Note'></div>");
+        ingredientIndex++;
     }
 </script>
 }

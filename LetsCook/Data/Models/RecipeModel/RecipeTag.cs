@@ -1,6 +1,7 @@
 ﻿namespace LetsCook.Data.Models.RecipeModel
 {
     using Data.Common;
+
     public class RecipeTag : BaseModel<int>
     {
         public int RecipeId { get; set; }

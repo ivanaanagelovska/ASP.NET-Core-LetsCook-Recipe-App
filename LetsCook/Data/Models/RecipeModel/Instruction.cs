@@ -3,7 +3,9 @@
     using System.ComponentModel.DataAnnotations;
 
     using Data.Common;
+
     using static DataConstants;
+
     public class Instruction : BaseModel<int>
     {
         public int StepNumber { get; set; }

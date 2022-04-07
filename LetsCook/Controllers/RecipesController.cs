@@ -41,6 +41,20 @@
         [HttpPost]
         public IActionResult Create(CreateRecipeFormModel recipe)
         {
+            if (!this.categories.GetAllCategories().Any(x => x.Id == recipe.CategoryId))
+            {
+                this.ModelState.AddModelError(nameof(recipe.CategoryId), "Choose a valid category");
+            }
+
+            if (!this.cuisines.GetAllCuisines().Any(x => x.Id == recipe.CuisineId))
+            {
+                this.ModelState.AddModelError(nameof(recipe.CuisineId), "Choose a valid cuisine");
+            }
+
+            if (!this.difficulties.GetAllDifficulties().Any(x => x.Id == recipe.DifficultyId))
+            {
+                this.ModelState.AddModelError(nameof(recipe.DifficultyId), "Choose a valid difficulty");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -52,7 +66,7 @@
                 return this.View(recipe);
             }
 
-            this.recipes.Create(recipe);
+            //this.recipes.Create(recipe);
             return Json(recipe);
         }
     }

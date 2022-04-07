@@ -4,6 +4,7 @@ using LetsCook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LetsCook.Data.Migrations
 {
     [DbContext(typeof(LetsCookDbContext))]
-    partial class LetsCookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220407210306_RemoveRecipeColumnRestTime")]
+    partial class RemoveRecipeColumnRestTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
